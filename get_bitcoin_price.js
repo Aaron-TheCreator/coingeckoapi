@@ -30,13 +30,11 @@ const req = https.request(options, (res) => {
   });
 
   res.on('end', () => {
-    readline.question('Price in USD or EUR?', curr => {
-        if (curr == "USD") {
-            console.log('The price of Bitcoin is ' + JSON.parse(data)['market_data']['current_price']['usd'] + " per coin.");
-        } else if (curr == "EUR") {
-            console.log('The price of Bitcoin is ' + JSON.parse(data)['market_data']['current_price']['eur'] + " per coin.");
+    readline.question('Which currency (Ex. USD, EUR, JPY, ETH)?', curr => {
+        if (JSON.parse(data)['market_data']['current_price'][`${curr}`.toLowerCase()]) {
+          console.log('The price of Bitcoin is ' + JSON.parse(data)['market_data']['current_price'][`${curr}`.toLowerCase()] + `${curr}`+ " per coin.");
         } else {
-            console.log("Please pick USD or EUR.");
+            console.log(`Currency: ${curr} not found. Please Try again`);
         };
         readline.close();
     })
