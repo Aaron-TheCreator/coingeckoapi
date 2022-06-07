@@ -1,6 +1,6 @@
 // this is a vanilla js HTTP GET request to coingecko API
-// to get the current price of bitcoin, ask whether USD or EUR
-//  and return price as string
+// to get the current price of bitcoin or ethereum, ask which currency
+// and return price as string
 // this can be improved by passing in the contract address in the url and 
 // having much less data to parse through
 
